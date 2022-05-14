@@ -3,18 +3,18 @@ import heartFilled from "../../svgs/heartFilled.svg";
 import heartOutlined from "../../svgs/heartOutlined.svg";
 import "./Card.css";
 
-function Card({ name, phone, email, image, favorite }) {
+function Card({ name, phone, email, image, favoured }) {
 
-const [isFavorite, setIsFavorite] = useState(favorite);   
+const [isFavoured, setIsFavoured] = useState(favoured);   
 
- const [src , alt ] = isFavorite ? [heartFilled, "filled heart"] : [heartOutlined, "outlined heart"];    
+ const [src , alt ] = isFavoured ? [heartFilled, "filled heart"] : [heartOutlined, "outlined heart"];    
 
 
   return (
-    <div className="card">
+    <article className="card">
       <div className="card-header">
           <img src={image.url} alt={image.alt} className="card-img" />
-          <button className="heart" onClick={() => setIsFavorite(prev => !prev)} >
+          <button className="heart" onClick={() => setIsFavoured(prev => !prev)} >
               <img src={src} alt={alt} />
           </button>
       </div>
@@ -24,7 +24,7 @@ const [isFavorite, setIsFavorite] = useState(favorite);
         <p>{email}</p>
       </div>
 
-    </div>
+    </article>
   );
 }
 

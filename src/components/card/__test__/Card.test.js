@@ -10,7 +10,7 @@ const cardProps = {
     url: "https://media.istockphoto.com/photos/kitten-exploring-domestic-setting-picture-id1335433001?k=20&m=1335433001&s=612x612&w=0&h=dsapxuNHv_J3eG05LFjqqf7NhfI6XNnhNq5KjReY_lE=",
     alt: "cute cat",
   },
-  favorite: false,
+  favoured: false,
 };
 
 describe("Card", () => {
@@ -44,7 +44,7 @@ describe("Card", () => {
   });
 
   test("Should show filled heart", () => {
-    render(<Card {...cardProps} favorite={true} />);
+    render(<Card {...cardProps} favoured={true} />);
     expect(screen.getByAltText(/filled heart/i)).toBeInTheDocument();
     expect(screen.queryByAltText(/outlined heart/i)).not.toBeInTheDocument();
   });
