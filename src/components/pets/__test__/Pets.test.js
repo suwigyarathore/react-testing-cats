@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import Pets from "../Pets";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
@@ -23,4 +24,20 @@ describe("Pets", () => {
     const cards = await screen.findAllByRole("article");
     expect(cards).toHaveLength(5);
   });
+
+  test("should filter for male cats", async () =>{
+    render(<Pets/>)
+    const cards = await screen.findAllByRole("article");
+    userEvent.selectOptions(screen.getByLabelText(/gender/i), 'male');
+    const maleCards = screen.getAllByRole("article");
+    expect(maleCards).toStrictEqual([cards[1], cards[3]]); 
+  });
+
+  test("should filter for female cats", async () =>{
+    render(<Pets/>)
+    const cards = await screen.findAllByRole("article");
+    userEvent.selectOptions(screen.getByLabelText(/gender/i), 'female');
+    const femaleCards = screen.getAllByRole("article");
+    expect(femaleCards).toStrictEqual([cards[0], cards[2], cards[4]]); 
+  })
 });
