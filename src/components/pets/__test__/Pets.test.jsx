@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { describe, test, expect, afterEach, beforeAll, afterAll} from 'vitest';
 import Pets from "../Pets";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
@@ -16,7 +17,7 @@ const server = setupServer(
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
-afterEach(() => server.close());
+afterAll(() => server.close());
 
 describe("Pets", () => {
   test("Should render the correct amount of cards", async () => {

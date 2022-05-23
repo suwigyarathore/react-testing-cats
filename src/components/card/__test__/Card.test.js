@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvents from "@testing-library/user-event";
+import { describe, test, expect} from 'vitest';
 import Card from "../Card";
 
 const cardProps = {
